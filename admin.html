@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Aura Fashion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Aura Fashion Admin</h1>
+        <nav>
+            <a href="index.html">Website</a>
+            <a href="admin.html">Dashboard</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <section class="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+
+        <div class="admin-cards">
+
+            <div class="product-card">
+                <h3>Total Products</h3>
+                <p id="totalProducts">0</p>
+            </div>
+
+            <div class="product-card">
+                <h3>Total Orders</h3>
+                <p id="totalOrders">0</p>
+            </div>
+
+            <div class="product-card">
+                <h3>Total Users</h3>
+                <p id="totalUsers">0</p>
+            </div>
+
+        </div>
+
+        <br>
+
+        <h3>Add New Product</h3>
+
+        <form id="addProductForm">
+            <input type="text" id="productName" placeholder="Product Name" required>
+
+            <input type="number" id="productPrice" placeholder="Price" required>
+
+            <input type="text" id="productCategory" placeholder="Category" required>
+
+            <button type="submit">Add Product</button>
+        </form>
+
+        <div id="adminProducts"></div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aura Fashion Admin Panel</p>
+    </footer>
+
+    <script>
+        document.getElementById("addProductForm")
+        .addEventListener("submit", function(e){
+
+            e.preventDefault();
+
+            const name =
+            document.getElementById("productName").value;
+
+            const price =
+            document.getElementById("productPrice").value;
+
+            const category =
+            document.getElementById("productCategory").value;
+
+            const productDiv =
+            document.createElement("div");
+
+            productDiv.classList.add("product-card");
+
+            productDiv.innerHTML = `
+                <h4>${name}</h4>
+                <p>Price: $${price}</p>
+                <p>Category: ${category}</p>
+            `;
+
+            document.getElementById("adminProducts")
+            .appendChild(productDiv);
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
